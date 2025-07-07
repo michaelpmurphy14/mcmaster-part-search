@@ -1,7 +1,12 @@
+import os
 from flask import Flask, request, render_template
 from retriever import search_parts
 
-app = Flask(__name__)
+# Tell Flask where to find the templates folder (one level up from /src)
+app = Flask(
+    __name__,
+    template_folder=os.path.join(os.path.dirname(__file__), "../templates")
+)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
