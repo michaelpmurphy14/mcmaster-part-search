@@ -1,25 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>McMaster Part Search</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="/static/app.js"></script>
 </head>
-<body>
-  <h1>🔍 Search McMaster-Carr Parts</h1>
+<body class="bg-gray-100 text-gray-800 max-w-4xl mx-auto p-6">
 
-  <form method="POST">
-    <input type="text" name="query" placeholder="e.g. 1/2 inch heat-resistant tubing" value="{{ query }}" style="width: 300px;">
-    <button type="submit">Search</button>
+  <h1 class="text-3xl font-semibold text-blue-900 mb-6">🔍 McMaster-Carr Part Search</h1>
+
+  <form method="POST" class="flex gap-3 mb-6">
+    <input 
+      type="text" 
+      name="query" 
+      placeholder="e.g. 1/4 inch zinc bolt" 
+      value="{{ query }}" 
+      required
+      class="flex-1 px-4 py-2 border border-gray-300 rounded"
+    >
+    <button 
+      type="submit"
+      class="px-5 py-2 bg-blue-700 text-white font-medium rounded hover:bg-blue-900"
+    >
+      Search
+    </button>
   </form>
 
-  {% if results %}
-    <h2>Results:</h2>
-    <ul>
-      {% for item in results %}
-        <li><strong>{{ item.name }}</strong> (Part #{{ item.part_number }})<br>{{ item.description }}</li>
-      {% endfor %}
-    </ul>
-  {% elif query %}
-    <p>No results found.</p>
+  {% if not results and not query %}
+    <p class="text-gray-500">Enter a part description above to begin searching.</p>
   {% endif %}
+
+  {% if results %}
+    <h2 class="text-xl font-semibold mb-4">Results:</h2>
+    <div class="space-y-4">
+      {% for item in results %}
+        <div class="bg-white border-l-4 border-blue-700 shadow-sm p-4 rounded">
+          <div class="flex justify-between">
+            <div>
+              <div class="text-lg font-semibold text-blue-800">{{ item.name }}</div>
+              <div class="text-sm text-gray-500">Part #{{ item.part_number }}</div>
+              <div class="text-sm text-gray-500">Category: {{ item.category }}</div>
+              <p class="mt-2 text-sm text-gray-700">{{ item.description }}</p>
+            </div>
+            <div class="text-sm text-right text-gray-600 min-w-[120px]">
+              <div><strong>Est. Price:</strong> $--.--</div>
+              <div><strong>In Stock:</strong> ✓</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% elif query %}
+    <p class="text-red-600 mt-4">No results found for "<strong>{{ query }}</strong>".</p>
+  {% endif %}
+
+  <footer class="mt-12 text-sm text-gray-500 border-t pt-4">
+    <p><strong>Disclaimer:</strong> This is a personal hobby project built for educational and portfolio purposes. It is not affiliated with or endorsed by McMaster-Carr.</p>
+  </footer>
+
 </body>
 </html>

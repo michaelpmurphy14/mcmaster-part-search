@@ -1,0 +1,117 @@
+/* Layout and base */
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background-color: #f5f7fa;
+    margin: 40px auto;
+    max-width: 900px;
+    color: #2c3e50;
+  }
+  
+  /* Typography */
+  h1 {
+    font-size: 1.9em;
+    margin-bottom: 20px;
+    color: #002e5d;
+  }
+  
+  h2 {
+    margin-top: 30px;
+    font-size: 1.4em;
+    color: #444;
+  }
+  
+  /* Search form */
+  form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    align-items: center;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #003f7f;
+  }
+  
+  /* Card layout */
+  .results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .part-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    border-left: 5px solid #0056b3;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    animation: fadeIn 0.2s ease-in;
+  }
+  
+  .part-info {
+    flex: 1;
+  }
+  
+  .part-name {
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 4px;
+    color: #003b73;
+  }
+  
+  .part-number {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .part-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  /* Placeholder meta area (right side) */
+  .part-meta {
+    text-align: right;
+    font-size: 13px;
+    color: #555;
+    min-width: 150px;
+  }
+  
+  footer {
+    margin-top: 40px;
+    font-size: 13px;
+    color: #666;
+  }
+  
+  hr {
+    margin: 40px 0 20px;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
